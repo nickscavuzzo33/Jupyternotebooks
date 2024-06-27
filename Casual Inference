@@ -1,0 +1,75 @@
+Casusal inference practice demonstations 
+
+User Engagement A/B Test:
+Suppose Coinbase wants to determine if a new user interface increases user engagement.
+
+Hypothesis: The new UI causes increased user engagement.
+Experiment:
+
+Randomly assign users to control (old UI) and treatment (new UI) groups.
+Measure daily active usage over a month.
+Use a difference-in-differences analysis to estimate the causal effect.
+
+Python code snippet:
+pythonCopyimport pandas as pd
+import statsmodels.api as sm
+
+# Assume we have a DataFrame 'df' with columns: user_id, treatment, pre_usage, post_usage
+df['usage_diff'] = df['post_usage'] - df['pre_usage']
+
+model = sm.OLS.from_formula('usage_diff ~ treatment', data=df)
+results = model.fit()
+print(results.summary())
+
+Instrumental Variable Analysis:
+Let's say Coinbase wants to understand the impact of trading frequency on user retention, but trading frequency is influenced by many factors.
+
+Hypothesis: Higher trading frequency causes higher retention rates.
+Approach: Use a promotion (randomly assigned) as an instrumental variable for trading frequency.
+Python code snippet:
+pythonCopyimport statsmodels.api as sm
+
+# Assume 'df' has columns: user_id, retention, trading_freq, promotion
+# First stage
+first_stage = sm.OLS.from_formula('trading_freq ~ promotion', data=df).fit()
+
+# Second stage
+df['predicted_trading_freq'] = first_stage.predict(df)
+second_stage = sm.OLS.from_formula('retention ~ predicted_trading_freq', data=df).fit()
+
+print(second_stage.summary())
+
+Regression Discontinuity:
+Coinbase might want to evaluate the impact of a loyalty program that kicks in when users reach a certain trading volume.
+
+Hypothesis: The loyalty program causes increased user activity.
+Approach: Compare users just below and just above the trading volume threshold.
+Python code snippet:
+pythonCopyimport numpy as np
+import statsmodels.api as sm
+
+# Assume 'df' has columns: user_id, trading_volume, activity_level
+df['above_threshold'] = (df['trading_volume'] >= 1000).astype(int)
+df['centered_volume'] = df['trading_volume'] - 1000
+
+model = sm.OLS.from_formula('activity_level ~ above_threshold + centered_volume + above_threshold:centered_volume', 
+                            data=df[np.abs(df['centered_volume']) < 100])  # bandwidth of 100
+results = model.fit()
+print(results.summary())
+
+Difference-in-Differences:
+Coinbase introduces a new feature in certain regions and wants to measure its impact on user acquisition.
+
+Hypothesis: The new feature causes increased user acquisition.
+Approach: Compare the change in user acquisition in regions with and without the feature.
+Python code snippet:
+pythonCopyimport pandas as pd
+import statsmodels.api as sm
+
+# Assume 'df' has columns: region, time, treatment, user_acquisition
+df['post_treatment'] = (df['time'] > 'feature_launch_date').astype(int)
+df['did'] = df['treatment'] * df['post_treatment']
+
+model = sm.OLS.from_formula('user_acquisition ~ treatment + post_treatment + did', data=df)
+results = model.fit()
+print(results.summary())
