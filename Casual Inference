@@ -22,7 +22,7 @@ results = model.fit()
 print(results.summary())
 
 Instrumental Variable Analysis:
-Let's say Coinbase wants to understand the impact of trading frequency on user retention, but trading frequency is influenced by many factors.
+Let's say Coinbase wants to understand the impact of trading frequency on user retention, but many factors influence trading frequency.
 
 Hypothesis: Higher trading frequency causes higher retention rates.
 Approach: Use a promotion (randomly assigned) as an instrumental variable for trading frequency.
