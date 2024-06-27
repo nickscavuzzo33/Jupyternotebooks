@@ -1,4 +1,4 @@
-Data Science and Engineering Portfolio examples 
+# Data Science and Engineering Portfolio examples 
 
 
 E-commerce database SQL - This SQL code creates a basic e-commerce database with tables for customers, products, orders, and order items. It also inserts sample data and includes five example queries that demonstrate various SQL concepts:
@@ -8,9 +8,13 @@ Subqueries and HAVING clause
 Aggregation with AVG()
 CASE statement for conditional logic
 
-Predict ETH/USD 
+# Predict ETH/USD 
 
-Casual Inference A/B Testing 
+# Casual Inference A/B Testing 
+examples of data Coinbase may want to use 
 
-Token dynamics 
+# Token dynamics 
+from data science competitions 
 
+# Traffic Accidents
+from data science competitions 
