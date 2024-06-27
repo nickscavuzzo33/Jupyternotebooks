@@ -10,6 +10,7 @@ Aggregation with AVG()
 CASE statement for conditional logic
 
 # Predict ETH/USD 
+Simple predicition model made for allora labs ML model to host in their node 
 
 # Casual Inference A/B Testing 
 examples of data Coinbase may want to use 
