@@ -4,14 +4,13 @@ User Engagement A/B Test:
 Suppose Coinbase wants to determine if a new user interface increases user engagement.
 
 Hypothesis: The new UI causes increased user engagement.
-Experiment:
+Experiment: Randomly assign users to control (old UI) and treatment (new UI) groups.
 
-Randomly assign users to control (old UI) and treatment (new UI) groups.
 Measure daily active usage over a month.
 Use a difference-in-differences analysis to estimate the causal effect.
 
 Python code snippet:
-pythonCopyimport pandas as pd
+import pandas as pd
 import statsmodels.api as sm
 
 # Assume we have a DataFrame 'df' with columns: user_id, treatment, pre_usage, post_usage
