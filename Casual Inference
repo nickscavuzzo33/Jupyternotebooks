@@ -1,4 +1,4 @@
-Casusal inference practice demonstations 
+# Casusal inference practice demonstations 
 
 User Engagement A/B Test:
 Suppose Coinbase wants to determine if a new user interface increases user engagement.
@@ -42,10 +42,11 @@ print(second_stage.summary())
 Regression Discontinuity:
 Coinbase might want to evaluate the impact of a loyalty program that kicks in when users reach a certain trading volume.
 
-Hypothesis: The loyalty program causes increased user activity.
+# Hypothesis: The loyalty program causes increased user activity.
 Approach: Compare users just below and just above the trading volume threshold.
+
 Python code snippet:
-pythonCopyimport numpy as np
+import numpy as np
 import statsmodels.api as sm
 
 # Assume 'df' has columns: user_id, trading_volume, activity_level
@@ -58,12 +59,14 @@ results = model.fit()
 print(results.summary())
 
 Difference-in-Differences:
-Coinbase introduces a new feature in certain regions and wants to measure its impact on user acquisition.
+Coinbase introduced a new feature in certain regions and wants to measure its impact on user acquisition.
 
-Hypothesis: The new feature causes increased user acquisition.
+# Hypothesis: The new feature causes increased user acquisition.
 Approach: Compare the change in user acquisition in regions with and without the feature.
+
 Python code snippet:
-pythonCopyimport pandas as pd
+
+import pandas as pd
 import statsmodels.api as sm
 
 # Assume 'df' has columns: region, time, treatment, user_acquisition
