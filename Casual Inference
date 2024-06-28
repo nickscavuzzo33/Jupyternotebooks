@@ -26,7 +26,7 @@ Let's say Coinbase wants to understand the impact of trading frequency on user r
 Hypothesis: Higher trading frequency causes higher retention rates.
 Approach: Use a promotion (randomly assigned) as an instrumental variable for trading frequency.
 Python code snippet:
-pythonCopyimport statsmodels.api as sm
+import statsmodels.api as sm
 
 # Assume 'df' has columns: user_id, retention, trading_freq, promotion
 # First stage
